@@ -2,23 +2,23 @@ import datetime
 import pandas as pd
 import numpy as np
 import csv
-"""
+
 file_name = "data/data_base.csv"
-"""
+
 def update(file_name):
     datos_pandas = leer_datos(file_name)
-    funcion_maximo(datos_pandas)
-    funcion_minimo(datos_pandas)
-    funcion_Mediana(datos_pandas)
-    funcion_Promedio(datos_pandas)
-    funcion_Desviacion(datos_pandas)
-    funcion_Varianza(datos_pandas)
+    funcion_maximo(datos_pandas, file_name)
+    funcion_minimo(datos_pandas, file_name)
+    funcion_Mediana(datos_pandas, file_name)
+    funcion_Promedio(datos_pandas, file_name)
+    funcion_Desviacion(datos_pandas, file_name)
+    funcion_Varianza(datos_pandas, file_name)
    
     datos_graficar = leer_datos(file_name)
     return datos_graficar
 
 
-def funcion_maximo(datos):
+def funcion_maximo(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
     valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
@@ -29,7 +29,7 @@ def funcion_maximo(datos):
     guardar(dato_guardar, file_name)
 
 
-def funcion_minimo(datos):
+def funcion_minimo(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
     valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
@@ -39,7 +39,7 @@ def funcion_minimo(datos):
     dato_guardar = [1, date_string, "Minimo", resultado_min]
     guardar(dato_guardar, file_name)
 
-def funcion_Promedio(datos):
+def funcion_Promedio(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
     valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
@@ -49,7 +49,7 @@ def funcion_Promedio(datos):
     dato_guardar = data = [1, date_string, "Promedio", resultado_promedio]
     guardar(dato_guardar, file_name)
 
-def funcion_Mediana(datos):
+def funcion_Mediana(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
     valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
@@ -60,7 +60,7 @@ def funcion_Mediana(datos):
     guardar(dato_guardar, file_name)
     
 
-def funcion_Varianza(datos):
+def funcion_Varianza(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
     valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
@@ -70,7 +70,7 @@ def funcion_Varianza(datos):
     dato_guardar = data = [1, date_string, "Varianza", resultado_varianza]
     guardar(dato_guardar, file_name)
 
-def funcion_Desviacion(datos):
+def funcion_Desviacion(datos, file_name):
     now = datetime.datetime.now()
     date_string = now.strftime("%d/%m/%y %H:%M:%S")
     valores_temperatura = datos[datos["sensor"] == "Temperatura"]["value"]
